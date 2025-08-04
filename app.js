@@ -35,7 +35,6 @@ window.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // FIXED: use the correct field name expected by the backend
     const payload = { email, latexCode: latex };
 
     try {
