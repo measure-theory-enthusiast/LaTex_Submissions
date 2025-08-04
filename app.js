@@ -42,7 +42,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     try {
       // Replace with your deployed API URL
-      const response = await fetch('https://latexbot.netlify.app/', {
+      const response = await fetch('https://latexbot.netlify.app/.netlify/functions/latexbot', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
