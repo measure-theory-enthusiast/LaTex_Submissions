@@ -1,80 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Submit LaTeX</title>
-  <!-- Load MathJax to render math in the browser -->
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LaTeX to PDF</title>
+  <link rel="stylesheet" href="styles.css"/>
+
+  <!-- Configure MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+  <script src="app.js" defer></script>
 </head>
 <body>
+  <h1>Enter Email and LaTeX code</h1>
 
-<h2>Submit LaTeX for Compilation</h2>
+  <form id="latexForm">
+    <label for="email">Email (required):</label>
+    <input type="email" id="email" name="email" required />
 
-<!-- Form for user to submit their email and LaTeX code -->
-<form id="latexForm">
-  <label>Email:<br>
-    <input type="email" id="email" required>
-  </label><br><br>
+    <label for="latex">LaTeX code:</label>
+    <textarea id="latex" name="latex" placeholder="Enter your LaTeX code here"></textarea>
 
-  <label>LaTeX Code:<br>
-    <textarea id="latexInput" rows="10" cols="70" required>
-\documentclass{article}
-\usepackage{amsmath}
-\begin{document}
-\[
-\int_0^1 x^2 dx = \frac{1}{3}
-\]
-\end{document}
-    </textarea>
-  </label><br><br>
+    <h3>Preview:</h3>
+    <div id="preview"></div>
 
-  <button type="button" onclick="preview()">Preview</button>
-  <button type="submit">Submit</button>
-</form>
-
-<h3>Math Preview:</h3>
-<!-- Container to display the rendered math -->
-<div id="previewBox" style="border:1px solid #ccc; padding:15px;"></div>
-<p id="statusMessage"></p>
-
-<script>
-  // When 'Preview' is clicked, show the math rendered with MathJax
-  function preview() {
-    const latex = document.getElementById("latexInput").value;
-    document.getElementById("previewBox").textContent = latex;
-    MathJax.typesetPromise();
-  }
-
-  // Handle the form submission and send data to Google Apps Script
-  document.getElementById("latexForm").addEventListener("submit", function(e) {
-    e.preventDefault(); // prevent page reload
-
-    const email = document.getElementById("email").value.trim();
-    const latex = document.getElementById("latexInput").value;
-
-    if (!email) {
-      alert("Please provide an email.");
-      return;
-    }
-
-    document.getElementById("statusMessage").textContent = "Submitting...";
-
-    // Send email and LaTeX to Google Apps Script backend
-    fetch("https://script.google.com/macros/s/AKfycbyDmhXXPrdzFTLR3MewKU_1ThSMFFVafQLjXQsD1OtfK3spoqPDrh8drZITt5RGNu5etw/exec", { // Replace with your deployed Web App URL
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: email, latex: latex })
-    })
-    .then(res => res.text()) // Parse response as plain text
-    .then(msg => {
-      document.getElementById("statusMessage").textContent = msg; // Show result to user
-    })
-    .catch(err => {
-      console.error(err);
-      document.getElementById("statusMessage").textContent = "An error occurred.";
-    });
-  });
-</script>
-
+    <button type="submit">Submit</button>
+  </form>
 </body>
 </html>

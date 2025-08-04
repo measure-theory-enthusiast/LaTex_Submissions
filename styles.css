@@ -1,0 +1,22 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+label, input, textarea {
+  display: inline;
+  margin: 10px 0;
+  width: 100%;
+}
+
+textarea {
+  height: 150px;
+  font-family: monospace;
+}
+
+#preview {
+  border: 1px solid hsl(0, 0%, 0%);
+  padding: 10px;
+  min-height: 80px;
+  background: #ffffff;
+}
