@@ -9,15 +9,13 @@ window.addEventListener('DOMContentLoaded', () => {
     const tex = latexInput.value;
     previewDiv.innerHTML = tex;
 
-    // Re-render MathJax (async)
+    // Re-render MathJax
     if (window.MathJax) {
       MathJax.typesetPromise([previewDiv]).catch((err) => console.error(err.message));
     }
   }
 
   latexInput.addEventListener('input', updatePreview);
-
-  // Initial preview
   updatePreview();
 
   // Form submit handler
@@ -37,11 +35,10 @@ window.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Prepare payload
-    const payload = { email, latex };
+    // FIXED: use the correct field name expected by the backend
+    const payload = { email, latexCode: latex };
 
     try {
-      // Replace with your deployed API URL
       const response = await fetch('https://latexbot.netlify.app/.netlify/functions/latexbot', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -51,12 +48,14 @@ window.addEventListener('DOMContentLoaded', () => {
       const data = await response.json();
 
       if (response.ok) {
-        alert('PDF generated and emailed successfully!');
+        alert('✅ PDF generated and emailed successfully!');
       } else {
-        alert('Error: ' + (data.error || 'Unknown error'));
+        alert('❌ Error: ' + (data.error || 'Unknown error'));
+        console.error(data);
       }
     } catch (err) {
-      alert('Network error: ' + err.message);
+      alert('❌ Network error: ' + err.message);
+      console.error(err);
     }
   });
 });
