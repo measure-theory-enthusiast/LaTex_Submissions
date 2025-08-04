@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Submit LaTeX</title>
+  <!-- Load MathJax to render math in the browser -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+<h2>Submit LaTeX for Compilation</h2>
+
+<!-- Form for user to submit their email and LaTeX code -->
+<form id="latexForm">
+  <label>Email:<br>
+    <input type="email" id="email" required>
+  </label><br><br>
+
+  <label>LaTeX Code:<br>
+    <textarea id="latexInput" rows="10" cols="70" required>
+\documentclass{article}
+\usepackage{amsmath}
+\begin{document}
+\[
+\int_0^1 x^2 dx = \frac{1}{3}
+\]
+\end{document}
+    </textarea>
+  </label><br><br>
+
+  <button type="button" onclick="preview()">Preview</button>
+  <button type="submit">Submit</button>
+</form>
+
+<h3>Math Preview:</h3>
+<!-- Container to display the rendered math -->
+<div id="previewBox" style="border:1px solid #ccc; padding:15px;"></div>
+<p id="statusMessage"></p>
+
+<script>
+  // When 'Preview' is clicked, show the math rendered with MathJax
+  function preview() {
+    const latex = document.getElementById("latexInput").value;
+    document.getElementById("previewBox").textContent = latex;
+    MathJax.typesetPromise();
+  }
+
+  // Handle the form submission and send data to Google Apps Script
+  document.getElementById("latexForm").addEventListener("submit", function(e) {
+    e.preventDefault(); // prevent page reload
+
+    const email = document.getElementById("email").value.trim();
+    const latex = document.getElementById("latexInput").value;
+
+    if (!email) {
+      alert("Please provide an email.");
+      return;
+    }
+
+    document.getElementById("statusMessage").textContent = "Submitting...";
+
+    // Send email and LaTeX to Google Apps Script backend
+    fetch("https://script.google.com/macros/s/AKfycbyDmhXXPrdzFTLR3MewKU_1ThSMFFVafQLjXQsD1OtfK3spoqPDrh8drZITt5RGNu5etw/exec", { // Replace with your deployed Web App URL
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: email, latex: latex })
+    })
+    .then(res => res.text()) // Parse response as plain text
+    .then(msg => {
+      document.getElementById("statusMessage").textContent = msg; // Show result to user
+    })
+    .catch(err => {
+      console.error(err);
+      document.getElementById("statusMessage").textContent = "An error occurred.";
+    });
+  });
+</script>
+
+</body>
+</html>
