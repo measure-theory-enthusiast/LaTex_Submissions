@@ -1,0 +1,152 @@
+body {
+  margin: 5%;
+  height: 100vh; /* full viewport height */
+  background: linear-gradient(to bottom,hsl(183, 55%, 79%), rgb(219, 219, 219));
+  background-repeat: no-repeat; /* prevents repetition */
+  background-attachment: fixed; /* optional: keeps gradient fixed on scroll */
+  font-family: "Oswald";
+}
+
+.page-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #222;
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+  gap: 20px;
+}
+
+.profile-pic-container {
+  display: flex;
+  flex-direction: column; /* stack image and caption vertically */
+  align-items: center;    /* center caption below the image */
+}
+
+.profile-pic-container img {
+  max-width: 200px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.caption {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #555;
+  text-align: center;
+}
+
+.info {
+  flex: 1;
+}
+
+#university {
+  color: black;
+  text-decoration: none;
+} 
+
+#university:hover {
+  color: red; 
+  font-size: 1.5rem;
+}
+
+#fun_an {
+  color: black;
+  text-decoration: none;
+} 
+
+#fun_an:hover {
+  color: red; 
+  font-size: 1.5rem;
+}
+
+#PDE {
+  color: black;
+  text-decoration: none;
+} 
+
+#PDE:hover {
+  color: red; 
+  font-size: 1.5rem;
+}
+
+#submission {
+  color: black;
+  text-decoration: none;
+} 
+
+#submission:hover {
+  color: red; 
+  font-size: 1.5rem;
+}
+
+.info p {
+  text-align: justify;
+  line-height: 1.6;
+  font-size: 1.1rem;
+  margin-bottom: 0rem;
+}
+
+.cv-link {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 16px;
+  background-color: #0073e6;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.cv-link:hover {
+  background-color: #005bb5;
+}
+
+.bottom-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #000;   /* Black background */
+  color: white;             /* White text */
+  text-align: center;
+  padding: 10px 0;
+  font-family: "Oswald", sans-serif;
+  font-size: 1.1rem;
+  z-index: 15;            /* Stay above other content */
+}
+
+.bottom-banner a {
+  color: white;
+  text-decoration: none;
+}
+
+.bottom-banner a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 600px) {
+  .about-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .profile-pic {
+    max-width: 80%;
+    max-height: none;
+  }
+  .info {
+    margin-top: 20px;
+  }
+}

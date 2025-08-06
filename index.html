@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Matteo_Menghini</title>
+  <link rel="stylesheet" href="index.css"/>
+
+  <!-- Configure Roboto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  
+  <!-- Configure MathJax3 -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\(', '\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" defer></script>
+
+  <!-- Configure Banner Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+</head>
+
+<body>
+
+  <!-- Background Math -->
+  <div class="math-background">
+    <div class="formula-stream">
+      <div class="formula", style="transform: translateX(-25vw);">$$E = mc^2$$</div>
+      <div class="formula", style="transform: translateX(+15vw);">$$\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}$$</div>
+      <div class="formula", style="transform: translateX(-15vw);">$$\nabla \cdot \vec{E} = \frac{\rho}{\varepsilon_0}$$</div>
+      <div class="formula", style="transform: translateX(+5vw);">$$i\hbar\frac{\partial}{\partial t}\Psi = \hat{H}\Psi$$</div>
+      <div class="formula", style="transform: translateX(-20vw);">$$\sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}$$</div>
+      <div class="formula", style="transform: translateX(+30vw);">$$e^{i\pi}-1=0$$</div>
+      <!-- Duplicate for seamless loop -->
+      <div class="formula", style="transform: translateX(-25vw);">$$E = mc^2$$</div>
+      <div class="formula", style="transform: translateX(+15vw);">$$\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}$$</div>
+      <div class="formula", style="transform: translateX(-15vw);">$$\nabla \cdot \vec{E} = \frac{\rho}{\varepsilon_0}$$</div>
+      <div class="formula", style="transform: translateX(+5vw);">$$i\hbar\frac{\partial}{\partial t}\Psi = \hat{H}\Psi$$</div>
+      <div class="formula", style="transform: translateX(-20vw);">$$\sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}$$</div>
+      <div class="formula", style="transform: translateX(+30vw);">$$e^{i\pi}-1=0$$</div>
+    </div>
+  </div>
+
+
+  <!-- Title -->
+  <div class="title" id="title">
+    <h1>Welcome to Matteo Menghini's Website</h1>
+  </div>
+
+  <!-- Scrolling content -->
+  <div class="spacer">
+    <!-- Buttons -->
+    <div class="scroll-buttons">
+      <a href="\about_me\about_me.html"><button id="btn1" class="hidden" style="background: linear-gradient(to bottom,hsl(183, 55%, 79%), rgb(219, 219, 219));">About me</button></a>
+      <a target="_blank" href="https://drive.google.com/drive/folders/1_REHrxvH5kDV9kovDXWrt8So5rx7hAtR?usp=sharing"><button id="btn2" class="hidden" style="background: linear-gradient(to bottom,hsl(60, 100%, 76%), rgb(219, 219, 219));">My projects</button></a>
+      <a href="\latex_submissions\latex_submissions.html"><button id="btn3" class="hidden" style="background: linear-gradient(to bottom,hsl(0, 100%, 76%), rgb(219, 219, 219));">Submissions</button></a>
+    </div>
+  </div>
+
+  <!-- Bottom banner -->
+  <div class="bottom-banner hide" id="banner">
+
+    <h3>Contact Information:</h3>
+
+    <hr/>
+
+    <a href="mailto:matteo.menghini.2002.ac@gmail.com" target="_blank" rel="noopener">
+      <i class="fas fa-envelope"></i> matteo.menghini.2002.ac@gmail.com
+    </a>
+
+    <a href="https://math.stackexchange.com/users/998769/matteo-menghini" target="_blank" rel="noopener">
+      <img src="https://cdn.sstatic.net/Sites/math/img/apple-touch-icon.png" alt="Math SE" class="icon" />
+      Math Stack Exchange
+    </a>
+  
+    <a href="https://github.com/measure-theory-enthusiast" target="_blank" rel="noopener">
+      <i class="fab fa-github"></i> GitHub
+    </a>
+
+  </div>
+
+  <script src="index.js"></script>
+
+
+
+</body>
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Submissions</title>
+  <link rel="stylesheet" href="latex_submissions.css"/>
+
+  <!-- Configure MathJax3 -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" defer></script>
+  <script src="latexbot_frontend.js" defer></script>
+</head>
+
+<body>
+
+  <h1>Enter Email and LaTeX code</h1>
+
+  <form id="latexForm">
+    <label for="email">Email (required):</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="latex">LaTeX code:</label>
+    <textarea id="latex" name="latex" placeholder="Enter your LaTeX code here"></textarea>
+
+    <h3>Preview:</h3>
+    <div id="preview"></div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <!-- Fixed Bottom Banner -->
+  <div class="bottom-banner">
+    <a href="../index.html">← Back to Home</a>
+  </div>
+  
+</body>
+
+</html>
