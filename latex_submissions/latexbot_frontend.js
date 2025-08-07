@@ -46,12 +46,15 @@ window.addEventListener('DOMContentLoaded', () => {
 
       const data = await response.json();
 
-      if (response.ok) {
-        alert('✅ PDF generated and emailed successfully!');
-      } else {
+      if (response.status === 429) {
+        alert('🚫 Daily email limit reached. Try again tomorrow.');
+      } else if (!response.ok) {
         alert('❌ Error: ' + (data.error || 'Unknown error'));
         console.error(data);
+      } else {
+        alert('✅ PDF generated and emailed successfully!');
       }
+
     } catch (err) {
       alert('❌ Network error: ' + err.message);
       console.error(err);
