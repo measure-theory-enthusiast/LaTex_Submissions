@@ -10,7 +10,7 @@ body {
 }
 
 /* Page title */
-h1,h4 {
+h1 {
   text-align: center;
   margin-top: 20px;
   font-size: 2rem;
@@ -50,6 +50,10 @@ textarea {
   height: 150px;
   resize: vertical;
   font-family: monospace;
+}
+
+#preview {
+  font-family: sans-serif;
 }
 
 /* Button styling */
